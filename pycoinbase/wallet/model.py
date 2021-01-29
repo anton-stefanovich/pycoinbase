@@ -7,7 +7,7 @@ from __future__ import unicode_literals
 import json
 import six
 
-from coinbase.wallet.compat import urlsplit
+from pycoinbase.wallet.compat import urlsplit
 
 
 def new_api_object(client, obj, cls=None, **kwargs):

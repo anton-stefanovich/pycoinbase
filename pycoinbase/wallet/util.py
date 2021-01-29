@@ -8,7 +8,7 @@ import json
 import six
 import warnings
 
-from coinbase.wallet.compat import urlparse
+from pycoinbase.wallet.compat import urlparse
 
 
 def clean_params(params, drop_nones=True, recursive=True):

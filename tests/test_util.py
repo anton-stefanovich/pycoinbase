@@ -6,7 +6,7 @@ from __future__ import unicode_literals
 
 import unittest2
 
-from coinbase.wallet.util import clean_params
+from pycoinbase.wallet.util import clean_params
 
 
 class TestUtils(unittest2.TestCase):

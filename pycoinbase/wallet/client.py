@@ -11,31 +11,31 @@ import requests
 import six
 import warnings
 
-from coinbase.wallet.auth import HMACAuth
-from coinbase.wallet.auth import OAuth2Auth
-from coinbase.wallet.compat import imap
-from coinbase.wallet.compat import quote
-from coinbase.wallet.compat import urljoin
-from coinbase.wallet.error import build_api_error
-from coinbase.wallet.model import APIObject
-from coinbase.wallet.model import Account
-from coinbase.wallet.model import Address
-from coinbase.wallet.model import Buy
-from coinbase.wallet.model import Checkout
-from coinbase.wallet.model import CurrentUser
-from coinbase.wallet.model import Deposit
-from coinbase.wallet.model import Merchant
-from coinbase.wallet.model import Notification
-from coinbase.wallet.model import PaymentMethod
-from coinbase.wallet.model import Order
-from coinbase.wallet.model import Sell
-from coinbase.wallet.model import Transaction
-from coinbase.wallet.model import Report
-from coinbase.wallet.model import User
-from coinbase.wallet.model import Withdrawal
-from coinbase.wallet.model import new_api_object
-from coinbase.wallet.util import check_uri_security
-from coinbase.wallet.util import encode_params
+from pycoinbase.wallet.auth import HMACAuth
+from pycoinbase.wallet.auth import OAuth2Auth
+from pycoinbase.wallet.compat import imap
+from pycoinbase.wallet.compat import quote
+from pycoinbase.wallet.compat import urljoin
+from pycoinbase.wallet.error import build_api_error
+from pycoinbase.wallet.model import APIObject
+from pycoinbase.wallet.model import Account
+from pycoinbase.wallet.model import Address
+from pycoinbase.wallet.model import Buy
+from pycoinbase.wallet.model import Checkout
+from pycoinbase.wallet.model import CurrentUser
+from pycoinbase.wallet.model import Deposit
+from pycoinbase.wallet.model import Merchant
+from pycoinbase.wallet.model import Notification
+from pycoinbase.wallet.model import PaymentMethod
+from pycoinbase.wallet.model import Order
+from pycoinbase.wallet.model import Sell
+from pycoinbase.wallet.model import Transaction
+from pycoinbase.wallet.model import Report
+from pycoinbase.wallet.model import User
+from pycoinbase.wallet.model import Withdrawal
+from pycoinbase.wallet.model import new_api_object
+from pycoinbase.wallet.util import check_uri_security
+from pycoinbase.wallet.util import encode_params
 
 from Crypto.Hash import SHA256
 from Crypto.PublicKey import RSA
@@ -56,7 +56,7 @@ class Client(object):
     and formatting.
 
     Any errors will be raised as exceptions. These exceptions will always be
-    subclasses of `coinbase.error.APIError`. HTTP-related errors will also be
+    subclasses of `pycoinbase.error.APIError`. HTTP-related errors will also be
     subclasses of `requests.HTTPError`.
 
     Full API docs, including descriptions of each API and its paramters, are

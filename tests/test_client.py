@@ -16,29 +16,29 @@ except ImportError:
 
 import httpretty as hp
 
-from coinbase.wallet.client import Client
-from coinbase.wallet.client import OAuthClient
-from coinbase.wallet.error import APIError
-from coinbase.wallet.error import AuthenticationError
-from coinbase.wallet.error import InvalidTokenError
-from coinbase.wallet.error import TwoFactorRequiredError
-from coinbase.wallet.error import ExpiredTokenError
-from coinbase.wallet.error import RevokedTokenError
-from coinbase.wallet.model import APIObject
-from coinbase.wallet.model import Account
-from coinbase.wallet.model import Merchant
-from coinbase.wallet.model import Checkout
-from coinbase.wallet.model import Address
-from coinbase.wallet.model import Order
-from coinbase.wallet.model import Buy
-from coinbase.wallet.model import CurrentUser
-from coinbase.wallet.model import Deposit
-from coinbase.wallet.model import PaymentMethod
-from coinbase.wallet.model import Sell
-from coinbase.wallet.model import Transaction
-from coinbase.wallet.model import User
-from coinbase.wallet.model import Withdrawal
-from coinbase.wallet.model import Report
+from pycoinbase.wallet.client import Client
+from pycoinbase.wallet.client import OAuthClient
+from pycoinbase.wallet.error import APIError
+from pycoinbase.wallet.error import AuthenticationError
+from pycoinbase.wallet.error import InvalidTokenError
+from pycoinbase.wallet.error import TwoFactorRequiredError
+from pycoinbase.wallet.error import ExpiredTokenError
+from pycoinbase.wallet.error import RevokedTokenError
+from pycoinbase.wallet.model import APIObject
+from pycoinbase.wallet.model import Account
+from pycoinbase.wallet.model import Merchant
+from pycoinbase.wallet.model import Checkout
+from pycoinbase.wallet.model import Address
+from pycoinbase.wallet.model import Order
+from pycoinbase.wallet.model import Buy
+from pycoinbase.wallet.model import CurrentUser
+from pycoinbase.wallet.model import Deposit
+from pycoinbase.wallet.model import PaymentMethod
+from pycoinbase.wallet.model import Sell
+from pycoinbase.wallet.model import Transaction
+from pycoinbase.wallet.model import User
+from pycoinbase.wallet.model import Withdrawal
+from pycoinbase.wallet.model import Report
 from tests.helpers import mock_response
 
 
@@ -118,8 +118,8 @@ class TestClient(unittest2.TestCase):
             self.assertEqual(response.status_code, code)
 
         # Check that when the error data is in the response, that's what is used.
-        import coinbase.wallet.error
-        for eid, eclass in six.iteritems(coinbase.wallet.error._error_id_to_class):
+        import pycoinbase.wallet.error
+        for eid, eclass in six.iteritems(pycoinbase.wallet.error._error_id_to_class):
             error_response = {
                 'errors': [{
                     'id': eid,
@@ -139,7 +139,7 @@ class TestClient(unittest2.TestCase):
         # Check that when the error data is missing, the status code is used
         # instead.
         error_response = {'data': mock_item}
-        for code, eclass in six.iteritems(coinbase.wallet.error._status_code_to_class):
+        for code, eclass in six.iteritems(pycoinbase.wallet.error._status_code_to_class):
             hp.reset()
             hp.register_uri(
                 hp.GET,
@@ -465,7 +465,7 @@ class TestClient(unittest2.TestCase):
     @mock_response(hp.POST, '/v2/reports', mock_item)
     def test_create_report(self):
         client = Client(api_key, api_secret)
-        report = client.create_report(email='example@coinbase.com', type='transactions')
+        report = client.create_report(email='example@pycoinbase.com', type='transactions')
         self.assertIsInstance(report, APIObject)
         self.assertIsInstance(report, Report)
         self.assertEqual(report, mock_item)

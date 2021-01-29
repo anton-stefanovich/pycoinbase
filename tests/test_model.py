@@ -10,20 +10,20 @@ import warnings
 
 import httpretty as hp
 
-from coinbase.wallet.client import Client
-from coinbase.wallet.model import APIObject
-from coinbase.wallet.model import new_api_object
-from coinbase.wallet.model import Account
-from coinbase.wallet.model import Sell
-from coinbase.wallet.model import CurrentUser
-from coinbase.wallet.model import Deposit
-from coinbase.wallet.model import Checkout
-from coinbase.wallet.model import Order
-from coinbase.wallet.model import Withdrawal
-from coinbase.wallet.model import Buy
-from coinbase.wallet.model import Address
-from coinbase.wallet.model import Transaction
-from coinbase.wallet.model import Report
+from pycoinbase.wallet.client import Client
+from pycoinbase.wallet.model import APIObject
+from pycoinbase.wallet.model import new_api_object
+from pycoinbase.wallet.model import Account
+from pycoinbase.wallet.model import Sell
+from pycoinbase.wallet.model import CurrentUser
+from pycoinbase.wallet.model import Deposit
+from pycoinbase.wallet.model import Checkout
+from pycoinbase.wallet.model import Order
+from pycoinbase.wallet.model import Withdrawal
+from pycoinbase.wallet.model import Buy
+from pycoinbase.wallet.model import Address
+from pycoinbase.wallet.model import Transaction
+from pycoinbase.wallet.model import Report
 from tests.helpers import mock_response
 
 
@@ -244,7 +244,7 @@ class TestAccount(unittest2.TestCase):
     def test_create_report(self):
         client = Client(api_key, api_secret)
         account = new_api_object(client, mock_account, Account)
-        report = account.create_report(type='transactions', email='example@coinbase.com')
+        report = account.create_report(type='transactions', email='example@pycoinbase.com')
         self.assertIsInstance(report, APIObject)
         self.assertIsInstance(report, Report)
         self.assertEqual(report, mock_item)

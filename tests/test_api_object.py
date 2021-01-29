@@ -11,8 +11,8 @@ import six
 import unittest2
 import warnings
 
-from coinbase.wallet.model import APIObject
-from coinbase.wallet.model import new_api_object
+from pycoinbase.wallet.model import APIObject
+from pycoinbase.wallet.model import new_api_object
 
 
 # Dummy API key values for use in tests
@@ -81,29 +81,29 @@ class TestNewApiObject(unittest2.TestCase):
 
         class Foo(APIObject):
             pass
-        import coinbase.wallet.model
+        import pycoinbase.wallet.model
         # Preserve the inital values so that they can be restored after modifying
         # them for this test; otherwise, the modified versions will persist for
         # other tests.
-        original = coinbase.wallet.model._resource_to_model
-        coinbase.wallet.model._resource_to_model = {
+        original = pycoinbase.wallet.model._resource_to_model
+        pycoinbase.wallet.model._resource_to_model = {
             'foo': Foo,
         }
         obj = new_api_object(api_client, simple_data)
         self.assertIsInstance(obj, Foo)
-        coinbase.wallet.model._resource_to_model = original
+        pycoinbase.wallet.model._resource_to_model = original
 
     def test_new_api_object_guesses_based_on_keys(self):
         def api_client(x): return x
 
         class Foo(APIObject):
             pass
-        import coinbase.wallet.model
+        import pycoinbase.wallet.model
         # Preserve the inital values so that they can be restored after modifying
         # them for this test; otherwise, the modified versions will persist for
         # other tests.
-        original = coinbase.wallet.model._obj_keys_to_model
-        coinbase.wallet.model._obj_keys_to_model = {
+        original = pycoinbase.wallet.model._obj_keys_to_model
+        pycoinbase.wallet.model._obj_keys_to_model = {
             frozenset(('str', 'foo')): Foo,
         }
         simple_obj = new_api_object(api_client, simple_data)
@@ -111,7 +111,7 @@ class TestNewApiObject(unittest2.TestCase):
         self.assertIsInstance(simple_obj['obj'], Foo)
         for obj in simple_obj['list_of_objs']:
             self.assertNotIsInstance(obj, Foo)
-        coinbase.wallet.model._obj_keys_to_model = original
+        pycoinbase.wallet.model._obj_keys_to_model = original
 
     def test_new_api_object_transforms_types_appropriately(self):
         def api_client(x): return x
