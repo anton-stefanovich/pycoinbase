@@ -37,6 +37,18 @@ class ParamRequiredError(APIError):
     pass
 
 
+class IdentityVerificationRequiredError(APIError):
+    pass
+
+
+class JumioVerificationRequiredError(APIError):
+    pass
+
+
+class JumioFaceMatchVerificationRequiredError(APIError):
+    pass
+
+
 class ValidationError(APIError):
     pass
 
@@ -121,6 +133,9 @@ def build_api_error(response, blob=None):
 _error_id_to_class = {
     'two_factor_required': TwoFactorRequiredError,
     'param_required': ParamRequiredError,
+    'identity_verification_required': IdentityVerificationRequiredError,
+    'jumio_verification_required': JumioVerificationRequiredError,
+    'jumio_face_match_verification_required': JumioFaceMatchVerificationRequiredError,
     'validation_error': ValidationError,
     'invalid_request': InvalidRequestError,
     'personal_details_required': PersonalDetailsRequiredError,
